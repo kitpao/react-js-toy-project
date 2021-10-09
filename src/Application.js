@@ -36,6 +36,13 @@ class Application extends Component {
     this.setState({count: this.state.count + 1});
   }
 
+  resetCount = (e) => {
+    this.setState({
+      count: 0,
+      overTen: false,
+    })
+  }
+
   render() {
       let {count} = this.state;
       let name = "Kit";
@@ -45,6 +52,7 @@ class Application extends Component {
         <h2>You clicked the button {count} times</h2>
         <HighScore 
           overTen={this.state.overTen}
+          onReset={(e)=> this.resetCount(e)}
         />
         
         <span>
