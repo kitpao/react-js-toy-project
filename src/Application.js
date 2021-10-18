@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import HighScore from './HighScore';
 import './css/style.css';
 
 class Application extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -19,22 +19,22 @@ class Application extends Component {
   //UNSAFE_componentWillReceiveProps(props){  //detects state change, before it mounts}
 
   //UNSAFE_componentWillUpdate(props, state){ //change in properties: this.props(current), props(old)
-    //if (this.props.name !== props.name){
-      // do something
-    //}
+  //if (this.props.name !== props.name){
+  // do something
+  //}
   //}
 
-  componentDidUpdate(props, state){ //when rerender happens: this.props(current), props(old)
+  componentDidUpdate(props, state) { //when rerender happens: this.props(current), props(old)
     // console.log("Updated from", state, "to", this.state )
-    if(this.state.count > 10 && this.state.count !== state.count && !this.state.overTen){
+    if (this.state.count > 10 && this.state.count !== state.count && !this.state.overTen) {
       // only when its bigger, when it is called for the first time (avoid infinite loop), when flag changed
       console.log("Updating over ten");
-      this.setState({overTen: true});
+      this.setState({ overTen: true });
     }
   }
-  
+
   handleClick = () => {
-    this.setState({count: this.state.count + 1});
+    this.setState({ count: this.state.count + 1 });
   }
 
   resetCount = (e) => {
@@ -46,19 +46,19 @@ class Application extends Component {
   }
 
   render() {
-      let {count} = this.state;
-      let name = "Kit";
+    let { count } = this.state;
+    let name = "Kit";
     return (
       <div>
         <h1>Hello, {name}</h1>
         <h2>You clicked the button {count} times</h2>
-        <HighScore 
+        <HighScore
           overTen={this.state.overTen}
           onReset={this.resetCount}
         />
-        
+
         <span>
-          <button onClick={()=> this.handleClick()}>CLICK ME</button>  
+          <button onClick={() => this.handleClick()}>CLICK ME</button>
         </span>
       </div>
     );
